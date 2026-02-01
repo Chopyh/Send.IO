@@ -1,0 +1,64 @@
+services:
+  api:
+    build:
+      context: ./sendio-api
+      dockerfile: Dockerfile
+    container_name: sendio_api_dev
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./sendio-api:/var/www/html
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - mongodb
+      - redis
+    networks:
+      - sendio_net
+
+  # POSTGRESQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: sendio_db_dev
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - sendio_net
+
+  # MONGODB
+  mongodb:
+    image: mongo:latest
+    container_name: sendio_mongo_dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - sendio_net
+
+  # REDIS
+  redis:
+    image: redis:alpine
+    container_name: sendio_redis_dev
+    ports:
+      - "6379:6379"
+    networks:
+      - sendio_net
+
+networks:
+  sendio_net:
+    driver: bridge
+
+volumes:
+  pgdata:
+  mongodata:

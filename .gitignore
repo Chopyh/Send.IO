@@ -1,0 +1,104 @@
+# ================================
+# Documentación y archivos privados
+# ================================
+/prompt.md
+.DS_Store
+Thumbs.db
+
+# ================================
+# Variables de entorno
+# ================================
+.env
+.env.local
+.env.*.local
+.env.backup
+.env.production
+.env.*.backup
+
+# ================================
+# FRONTEND (Angular - sendio-front)
+# ================================
+sendio-front/dist/
+sendio-front/tmp/
+sendio-front/out-tsc/
+sendio-front/bazel-out/
+sendio-front/node_modules/
+sendio-front/npm-debug.log
+sendio-front/yarn-error.log
+sendio-front/.angular/cache/
+sendio-front/.sass-cache/
+sendio-front/coverage/
+sendio-front/__screenshots__/
+
+# Visual Studio Code (Frontend)
+sendio-front/.vscode/*
+!sendio-front/.vscode/settings.json
+!sendio-front/.vscode/tasks.json
+!sendio-front/.vscode/launch.json
+!sendio-front/.vscode/extensions.json
+!sendio-front/.vscode/mcp.json
+sendio-front/.history/*
+
+# IDEs (Frontend)
+sendio-front/.idea/
+sendio-front/.project
+sendio-front/.classpath
+sendio-front/.c9/
+sendio-front/*.launch
+sendio-front/.settings/
+sendio-front/*.sublime-workspace
+
+# ================================
+# BACKEND (Laravel - sendio-api)
+# ================================
+sendio-api/node_modules/
+sendio-api/vendor/
+sendio-api/storage/logs/*.log
+sendio-api/storage/*.key
+sendio-api/storage/pail/
+sendio-api/public/build/
+sendio-api/public/hot
+sendio-api/public/storage
+sendio-api/bootstrap/cache/
+sendio-api/.phpactor.json
+sendio-api/.phpunit.result.cache
+sendio-api/.phpunit.cache
+sendio-api/auth.json
+sendio-api/Homestead.json
+sendio-api/Homestead.yaml
+
+# IDEs (Backend)
+sendio-api/.idea/
+sendio-api/.vscode/
+sendio-api/.nova/
+sendio-api/.zed/
+sendio-api/.fleet/
+
+# ================================
+# Sistema Operativo
+# ================================
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+*.tmp
+
+# ================================
+# IDEs globales
+# ================================
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.fleet/
+.nova/
+.zed/
+
+# ================================
+# Dependencias y cachés
+# ================================
+**/node_modules/
+**/vendor/
+**/.eslintcache
+**/.stylelintcache
