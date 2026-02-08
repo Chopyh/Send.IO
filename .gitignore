@@ -102,3 +102,14 @@ Thumbs.db
 **/vendor/
 **/.eslintcache
 **/.stylelintcache
+
+# ================================
+# IA y herramientas de desarrollo
+# ================================
+.agents/
+.claude/
+.github/
+
+# Claude Code specifics
+.mcp.json
+CLAUDE.md
