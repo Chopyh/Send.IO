@@ -109,7 +109,11 @@ Thumbs.db
 .agents/
 .claude/
 .github/
+.gemini/
 
 # Claude Code specifics
 .mcp.json
 CLAUDE.md
+
+# Other
+docs/
