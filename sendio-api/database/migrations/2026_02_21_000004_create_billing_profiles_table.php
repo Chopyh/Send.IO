@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('billing_profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('organization_id');
-            $table->enum('type', ['individual', 'company']);
+            $table->enum('type', ['personal', 'business']);
             $table->string('legal_name');
             $table->string('tax_id')->nullable();
+            $table->string('billing_email');
+            $table->string('billing_phone')->nullable();
             $table->string('address_line1');
             $table->string('address_line2')->nullable();
             $table->string('city');

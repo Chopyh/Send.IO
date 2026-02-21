@@ -15,11 +15,12 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('organization_id');
             $table->uuid('user_id');
-            $table->enum('role', ['admin', 'member', 'viewer']);
+            $table->enum('role', ['owner', 'admin', 'member']);
             $table->boolean('onboarding_completed')->default(false);
             $table->boolean('checklist_dismissed')->default(false);
             $table->timestamps();
 
+            $table->unique(['organization_id', 'user_id']);
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
