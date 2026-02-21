@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use MongoDB\Client;
+use Symfony\Component\HttpFoundation\Response;
 
 class LogRequests
 {
@@ -24,8 +24,9 @@ class LogRequests
             $database = $_ENV['MONGODB_DATABASE'] ?? env('MONGODB_DATABASE', 'sendio_logs');
 
             // Verificar que la URI existe
-            if (!$uri) {
+            if (! $uri) {
                 error_log('MONGODB_URI no está configurada');
+
                 return $response;
             }
 
@@ -47,7 +48,7 @@ class LogRequests
             ]);
         } catch (Exception $e) {
             // Si falla el log, que al menos no rompa la app
-            error_log('LogRequests error: ' . $e->getMessage());
+            error_log('LogRequests error: '.$e->getMessage());
         }
 
         return $response;

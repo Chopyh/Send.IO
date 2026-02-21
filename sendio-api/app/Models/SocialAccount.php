@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SocialAccount extends Model
 {
-    use HasUuids, HasFactory;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'user_id',
@@ -17,7 +17,7 @@ class SocialAccount extends Model
         'provider_email',
         'access_token',
         'refresh_token',
-        'token_expires_at'
+        'token_expires_at',
     ];
 
     protected function casts(): array

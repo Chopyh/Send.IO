@@ -16,7 +16,7 @@ services:
       APP_DEBUG: false
       APP_URL: https://sendio.chopy.me
       
-      # --- Logging (Vital para ver logs en Mongo) ---
+      # --- Logging ---
       LOG_CHANNEL: mongodb
       LOG_LEVEL: debug
       
@@ -53,7 +53,7 @@ services:
       - dokploy-network
 
   # ---------------------------------------------------------------------------
-  # DATABASES (Seguras y Accesibles solo vía SSH Tunnel)
+  # DATABASES & CACHE
   # ---------------------------------------------------------------------------
   
   postgres:

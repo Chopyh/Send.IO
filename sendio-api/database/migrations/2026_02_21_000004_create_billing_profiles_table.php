@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('organization_user', function (Blueprint $table) {
+        Schema::create('billing_profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('organization_id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('role')->default('member');
-            $table->boolean('onboarding_completed')->default(false);
-            $table->boolean('checklist_dismissed')->default(false);
+            $table->enum('type', ['individual', 'company']);
+            $table->string('legal_name');
+            $table->string('tax_id')->nullable();
+            $table->string('address_line1');
+            $table->string('address_line2')->nullable();
+            $table->string('city');
+            $table->string('state')->nullable();
+            $table->string('postal_code');
+            $table->string('country', 2); // ISO 3166-1
             $table->timestamps();
 
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unique(['organization_id', 'user_id']);
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organization_user');
+        Schema::dropIfExists('billing_profiles');
     }
 };

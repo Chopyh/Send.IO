@@ -2,9 +2,9 @@
 
 namespace App\Logging;
 
+use MongoDB\Client;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\LogRecord;
-use MongoDB\Client;
 
 class MongoHandler extends AbstractProcessingHandler
 {
@@ -20,7 +20,7 @@ class MongoHandler extends AbstractProcessingHandler
             $database = env('MONGODB_DATABASE', 'sendio_logs');
             $this->collection = $client->selectCollection($database, 'activity_logs');
         } catch (\Exception $e) {
-            error_log("MongoHandler constructor error: " . $e->getMessage());
+            error_log('MongoHandler constructor error: '.$e->getMessage());
             throw $e;
         }
     }
@@ -28,8 +28,9 @@ class MongoHandler extends AbstractProcessingHandler
     protected function write(LogRecord $record): void
     {
         try {
-            if (!$this->collection) {
-                error_log("MongoHandler: collection not initialized");
+            if (! $this->collection) {
+                error_log('MongoHandler: collection not initialized');
+
                 return;
             }
 
@@ -44,7 +45,7 @@ class MongoHandler extends AbstractProcessingHandler
             ]);
         } catch (\Exception $e) {
             // Log fallback si hay error
-            error_log("MongoHandler Error: " . $e->getMessage());
+            error_log('MongoHandler Error: '.$e->getMessage());
         }
     }
 }

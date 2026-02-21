@@ -11,19 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('social_accounts', function (Blueprint $table) {
+        Schema::create('organization_user', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('organization_id');
             $table->uuid('user_id');
-            $table->string('provider');
-            $table->string('provider_id');
-            $table->string('provider_email');
-            $table->text('access_token')->nullable();
-            $table->text('refresh_token')->nullable();
-            $table->timestamp('token_expires_at')->nullable();
+            $table->enum('role', ['admin', 'member', 'viewer']);
+            $table->boolean('onboarding_completed')->default(false);
+            $table->boolean('checklist_dismissed')->default(false);
             $table->timestamps();
 
+            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unique(['provider', 'provider_id']);
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('social_accounts');
+        Schema::dropIfExists('organization_user');
     }
 };
