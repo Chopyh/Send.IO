@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo_pgsql zip \
-    && pecl install redis mongodb-1.21.0 \
+    && pecl install redis mongodb-2.1.0 \
     && docker-php-ext-enable redis mongodb
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
