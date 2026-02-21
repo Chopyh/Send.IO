@@ -18,16 +18,16 @@ class BillingProfileFactory extends Factory
     public function definition(): array
     {
         return [
-        'organization_id' => Organization::factory(),
-        'type' => $this->faker->randomElement(['personal', 'business']),
-        'legal_name' => $this->faker->company(),
-        'tax_id' => $this->faker->numerify('TAX-#########'),
-        'billing_email' => $this->faker->companyEmail(),
-        'billing_phone' => $this->faker->phoneNumber(),
-        'address_line1' => $this->faker->streetAddress(),
-        'city' => $this->faker->city(),
-        'postal_code' => $this->faker->postcode(),
-        'country' => $this->faker->countryCode(), // ISO 3166-1 alpha-2
-    ];
+            'organization_id' => Organization::factory(),
+            'type' => $this->faker->randomElement(['personal', 'business']),
+            'legal_name' => $this->faker->company(),
+            'tax_id' => $this->faker->numerify('TAX-#########'),
+            'billing_email' => $this->faker->companyEmail(),
+            'billing_phone' => $this->faker->phoneNumber(),
+            'address_line1' => $this->faker->streetAddress(),
+            'city' => $this->faker->city(),
+            'postal_code' => $this->faker->postcode(),
+            'country' => $this->faker->countryCode(), // ISO 3166-1 alpha-2
+        ];
     }
 }

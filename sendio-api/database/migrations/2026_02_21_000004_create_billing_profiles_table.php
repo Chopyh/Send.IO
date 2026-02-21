@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('billing_profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('organization_id');
-            $table->string('type')->default('individual');
+            $table->enum('type', ['personal', 'business']);
             $table->string('legal_name');
             $table->string('tax_id')->nullable();
             $table->string('billing_email');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('state')->nullable();
             $table->string('postal_code');
-            $table->string('country');
+            $table->string('country', 2); // ISO 3166-1
             $table->timestamps();
 
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');

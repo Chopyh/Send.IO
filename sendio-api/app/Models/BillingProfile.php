@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class BillingProfile extends Model
 {
     /** @use HasFactory<\Database\Factories\BillingProfileFactory> */
-    use HasUuids, HasFactory;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'organization_id',

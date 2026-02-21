@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrganizationUser extends Model
 {
-    use HasUuids, HasFactory;
+    use HasFactory, HasUuids;
 
     protected $table = 'organization_user';
 
@@ -17,7 +17,7 @@ class OrganizationUser extends Model
         'user_id',
         'role',
         'onboarding_completed',
-        'checklist_dismissed'
+        'checklist_dismissed',
     ];
 
     protected function casts(): array

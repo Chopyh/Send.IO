@@ -9,7 +9,7 @@ class MongoLogger
     public function __invoke(array $config)
     {
         return new Logger('mongodb', [
-            new MongoHandler(),
+            new MongoHandler,
         ]);
     }
 }

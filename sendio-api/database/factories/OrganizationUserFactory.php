@@ -19,11 +19,11 @@ class OrganizationUserFactory extends Factory
     public function definition(): array
     {
         return [
-        'user_id' => User::factory(),
-        'organization_id' => Organization::factory(),
-        'role' => $this->faker->randomElement(['owner', 'admin', 'member']),
-        'onboarding_completed' => $this->faker->boolean(80), // 80% de prob de ser true
-        'checklist_dismissed' => $this->faker->boolean(50),
-    ];
+            'user_id' => User::factory(),
+            'organization_id' => Organization::factory(),
+            'role' => $this->faker->randomElement(['owner', 'admin', 'member']),
+            'onboarding_completed' => $this->faker->boolean(80), // 80% de prob de ser true
+            'checklist_dismissed' => $this->faker->boolean(50),
+        ];
     }
 }

@@ -14,15 +14,9 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-
-            // slug is a URL-friendly version of the name, used for routing and identification
             $table->string('slug')->unique();
-
-            // logo & website are optional
             $table->string('logo')->nullable();
             $table->string('website')->nullable();
-
-            // automatic created_at & updated_at
             $table->timestamps();
         });
     }

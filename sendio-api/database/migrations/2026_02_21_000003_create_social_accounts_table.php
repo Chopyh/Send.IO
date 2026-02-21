@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('social_accounts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('user_id');
+            $table->uuid('user_id');
             $table->string('provider');
             $table->string('provider_id');
-            $table->string('provider_email');
+            $table->string('provider_email')->nullable();
             $table->text('access_token')->nullable();
             $table->text('refresh_token')->nullable();
             $table->timestamp('token_expires_at')->nullable();

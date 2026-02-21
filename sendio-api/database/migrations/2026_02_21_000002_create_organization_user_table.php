@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('organization_user', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('organization_id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('role')->default('member');
+            $table->uuid('user_id');
+            $table->enum('role', ['owner', 'admin', 'member']);
             $table->boolean('onboarding_completed')->default(false);
             $table->boolean('checklist_dismissed')->default(false);
             $table->timestamps();
 
+            $table->unique(['organization_id', 'user_id']);
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unique(['organization_id', 'user_id']);
         });
     }
 

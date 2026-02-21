@@ -23,6 +23,4 @@ class OrganizationFactory extends Factory
             'website' => $this->faker->url(),
         ];
     }
-
-    
 }
